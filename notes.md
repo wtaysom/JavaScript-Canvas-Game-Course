@@ -18,31 +18,45 @@
 		4. Links
 	* [Validate HTML](http://validator.w3.org/)
 
-# Tools
+## Tools
 
 * [Sublime Text 2](http://www.sublimetext.com/2)
+* [SubEthaEdit](http://www.codingmonkeys.de/subethaedit/)
+* [Google Chrome Developer Tools](http://code.google.com/chrome/devtools/docs/overview.html)
 * [Firefox Aurora](http://www.mozilla.org/en-US/firefox/aurora/)
 
-# Tutorials
+## Tutorials
 
 * [HTML 5 Canvas Deep Dive](http://projects.joshy.org/presentations/HTML/CanvasDeepDive/presentation.html)
 * [Dive into HTML5 canvas](http://diveintohtml5.info/canvas.html)
 * [Mozilla Canvas Tutorial](https://developer.mozilla.org/en/Canvas_tutorial)
+* For manipulating pixels `python -m SimpleHTTPServer`.
 
-# Canvas Examples
+## Canvas Examples
 
 * [21 Ridiculously Impressive Experiments](http://net.tutsplus.com/articles/web-roundups/21-ridiculously-impressive-html5-canvas-experiments/)
 * [Canvas Demos](http://www.canvasdemos.com/)
 
-# Canvas Reference
+## Canvas Reference
 
 * [Cheat Sheet](http://blog.nihilogic.dk/2009/02/html5-canvas-cheat-sheet.html)
 * [Mozilla Reference](https://developer.mozilla.org/en/DOM/HTMLCanvasElement)
 * [WebKit Reference](https://developer.apple.com/library/mac/#documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/Canvas.html)
 * [W3C Reference](http://dev.w3.org/html5/2dcontext/)
 
-# Other
+## Other
 
 * [Nobody wants to learn how to program.](http://inventwithpython.com/blog/2012/03/03/nobody-wants-to-learn-how-to-program/)
 * [Little Programming Problems](http://coderbyte.com)
 * [7 Javascript Resources](http://accidentaltechnologist.com/javascript/7-resources-every-javascript-developer-should-know/)
+
+# Saturday March 24
+
+## Assignment
+
+!!
+
+## Examples
+
+* [Fractal Machine](http://www.cs.utoronto.ca/~noam/fractal_machine.html)
+* [Snake](https://gaming.mozillalabs.com/games/25/snake)
