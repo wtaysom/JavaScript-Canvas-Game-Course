@@ -70,13 +70,47 @@ Variables, expressions, statements, function calls, HTML canvas.
 
 # Saturday March 31
 
-!! what's the assignment and what's the plan?
+## Assignment
 
-## Exercise
+Thanks for forwarding the code John.  I have a few ideas of things to try out over the week:
 
-* Draw a rectangle.
-* Draw a triangle.
-* Draw a pentagon.
-* Make them curvy.
-* Draw a bunch.
-* Vary features.
+* Assign the particles random colors.
+* Instead of falling, have the particles bounce around a bit.
+* Factor out a `forEachParticle` function so that instead of
+		
+		for (var i in particles) {
+			var part = particles[i];
+			// do stuff with part...
+		}
+		
+	you just write
+		
+		forEachParticle(function(part) {
+			// do stuff with part...
+		});
+		
+* Assign particles random shapes (triangle, pentagon, weird curves with gradient fills)
+* Get the particles to interact with each other.  The trick is to make how a particle changes in `updateParticles` depend on other particles:
+		
+		function updateParticles() {
+			forEachParticle(function(part) {
+				// Update part in the normal way.
+				part.y += part.speed;
+				part.x = Math.sin(part.y / 5) * 10 + 200;
+				
+				forEachParticle(function(otherPart) {
+					// You need to define `isCloseTo`.
+					if (isCloseTo(part, otherPart)) {
+						// You need to define `updateInResponseTo`.
+						updateInResponseTo(part, otherPart);
+					}
+				});
+			});
+		}
+	For lots of games, the behavior of `updateInResponseTo` basically defines the rules.
+
+Feel free to email me or find me on Skype (username wtaysom) for more hints.
+
+## Topics
+
+!! mouse events, libraries, parameter slider using [Dragdealer JS](http://code.ovidiu.ch/dragdealer/)
