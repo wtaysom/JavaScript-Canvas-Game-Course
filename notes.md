@@ -18,6 +18,10 @@
 		4. Links
 	* [Validate HTML](http://validator.w3.org/)
 
+## Topics
+
+Variables, expressions, statements, function calls, HTML canvas.
+
 ## Tools
 
 * [Sublime Text 2](http://www.sublimetext.com/2)
@@ -54,9 +58,25 @@
 
 ## Assignment
 
-!!
+* Read over the [HTML 5 Canvas Deep Dive](http://projects.joshy.org/presentations/HTML/CanvasDeepDive/presentation.html) tutorial.
 
-## Examples
+## Topics
 
-* [Fractal Machine](http://www.cs.utoronto.ca/~noam/fractal_machine.html)
-* [Snake](https://gaming.mozillalabs.com/games/25/snake)
+`setTimeout`, `setInterval`, console.log, function definitions, loops, conditionals.
+
+## Example
+
+[Fractal Machine](http://www.cs.utoronto.ca/~noam/fractal_machine.html) is not perfect, but it does do some interesting things.  We'll ignore the jQuery and iPhone check box parts.
+
+# Saturday March 31
+
+!! what's the assignment and what's the plan?
+
+## Exercise
+
+* Draw a rectangle.
+* Draw a triangle.
+* Draw a pentagon.
+* Make them curvy.
+* Draw a bunch.
+* Vary features.
