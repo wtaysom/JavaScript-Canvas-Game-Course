@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.cs.utoronto.ca/~noam/fractal_machine.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
+    <title>Fractal Generator</title> 
+
+    <meta property="og:title" content="Fractal Machine">
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="http://www.cs.toronto.edu/~noam/fractal_machine.html">
+    <meta property="og:image" content="http://www.cs.toronto.edu/~noam/fractal_img.jpg">
+    <meta property="og:site_name" content="noam@uoft">
+    <meta property="fb:admins" content="noamsu">
+
+
+ <meta property="og:description" content="Interactive Javascript Fractal Machine -- grow your own fractals, in real time!">
+
+
+
+
+
+ 
+ 
+    <link href="libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+    <script src="libs/jquery/1.4/jquery.min.js"></script>
+    <script src="libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+    <script type="text/javascript" src="libs/jquery/1.3.2/jquery.min.js"></script> 
+    <script type="text/javascript" src="libs/jqueryui/1.7.2/jquery-ui.min.js"></script> 
+ 
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen"> 
+    <script type="text/javascript" src="iphone-style-checkboxes.js"></script> 
+ 
+    <style> 
+      A:visited {text-decoration: none; color: blue}
+      A:link {text-decoration: none; color: blue}
+      A:hover {text-decoration: none; color: red}
+    </style> 
+ 
+    <script type="text/javascript"> 
+      
+      $(':checkbox').iphoneStyle({
+      checkedLabel: 'YES',
+      uncheckedLabel: 'NO'
+      });
+      
+      $(document).ready(function() {
+      $(':checkbox').iphoneStyle();
+      });
+ 
+    </script> 
+ 
+    <link href="css" rel="stylesheet" type="text/css"> 
+    <style> 
+      body {
+      font-family: 'Neuton', serif;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 400;
+      text-shadow: none;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: 0em;
+      word-spacing: 0em;
+      line-height: 1em;
+      }
+ 
+      #container { position: relative; }
+      #imageView { border: 1px solid #000;}
+      #imageTemp { position: absolute; top: 1px; left: 1px;}
+ 
+      #helpers{
+      padding-bottom: 10%;
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 0;
+      margin-top: 0;
+      
+      }
+ 
+      #title{
+      font-size:34px;
+      padding: 1%;
+      margin-left: 12%;
+      }
+      
+      #ins{
+      margin-left: 15%;
+      padding:0;
+      }
+
+	</style> 
+ 
+ 
+    <script type="text/javascript" src="fractal_machine.js"></script> 
+ 
+ 
+  </head><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style> 
+ 
+  <body onload="init()" onmousemove="mouse_move(event)" onmousedown="mouse_down(event)" onmouseup="mouse_up(event)" onkeydown="keydown(event)"> 
+    
+    
+      
+      <div id="title">  Interactive JavaScript  Fractal Machine</div> 
+      	<br> 
+      <div id="ins">drag points to change the fractal, double click to add a point (max 3 points)</div> 
+    <table width="100%"> 
+      <tbody><tr> 
+        <td> 
+          <center> 
+            <table> 
+              <tbody><tr> 
+ 
+                <td width="25%"> 
+                  <div id="helpers2"></div> 
+                </td> 
+                
+                <td align="center">  
+                  <div id="container"><canvas id="imageView" width="720" height="490"></canvas><canvas id="imageTemp" width="720" height="490"></canvas></div> 
+                </td> 
+                
+                <td align="center" valign="top" width="100%">
+
+<br>    
+<table><tbody><tr><td>           
+<iframe src="about:blank" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowtransparency="true"></iframe>       </td></tr></tbody></table>
+                   
+
+			<div id="helpers">
+                    Press backspace anytime while hovering over a dot <br> to delete it.
+                    
+			<br><br><br>
+                    
+                    debug?
+                    <div class="iPhoneCheckContainer" style="width: 82px; "><input id="debug1" type="checkbox" name="option1" value="debug"><label class="iPhoneCheckLabelOff" style="width: 77px; "><span>OFF</span></label><label class="iPhoneCheckLabelOn" style="width: 0px; "><span style="margin-left: -43px; ">ON</span></label><div class="iPhoneCheckHandle" style="width: 34px; "><div class="iPhoneCheckHandleRight"><div class="iPhoneCheckHandleCenter"></div></div></div></div> 
+                    
+                   
+                    <div class="demo"> 
+ 
+                      <p> 
+                        <label for="amount">depth:</label> 
+                        <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"> 
+                      </p> 
+                      <div id="slider-range-max" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-slider-range-max ui-widget-header" style="width: 33.33333333333334%; "></div><a href="http://www.cs.utoronto.ca/~noam/fractal_machine.html#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 66.66666666666666%; "></a></div> 
+                      
+                      
+ 
+                      <br><br> 
+                      <button id="clear1">clear</button> 
+                      <br><br>                      
+                      <small><a href="http://www.cs.utoronto.ca/~noam">link to creator's web site</a></small> 
+                        
+                      
+                    </div> 
+                  </div> 
+                </td> 
+ 
+              </tr> 
+            </tbody></table> 
+            
+        </center></td> 
+      </tr> 
+    </tbody></table> 
+    
+ 
+   
+ 
+</body></html>
