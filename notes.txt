@@ -1,2 +1,0 @@
-Validate HTML <http://validator.w3.org/>.
-Dive into HTML5 canvas <http://diveintohtml5.info/canvas.html>.
