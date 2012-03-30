@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Particle Parameters</title>
+	<link rel="stylesheet" type="text/css" href="dragdealer.css" />
+	<style>
+		.dragdealer {
+			width: 500px;
+			margin: 5px;
+		}
+	
+		.rounded-cornered .handle {
+			border-radius: 5px;
+		}
+		
+		#click-clear {
+			cursor: pointer;
+			margin: 3px;
+			padding: 3px;
+			background-color: #DDF;
+			width: 100px;
+			position: relative;
+			border: 1px solid #EEF;
+		}
+	</style>
+</head>
+<body>
+	<div id='click-clear' onclick="clearCanvas()">Click to clear.</div>
+	<canvas id="canvas" width="480" height="320"
+		onclick="clearCanvas()"
+		style="background-color: black;"></canvas>
+	<div id="param-container"></div>
+	<script src="dragdealer.js"></script>
+	<script src="param.js"></script>
+	<script src="parameters.js"></script>
+</body>
+</html>

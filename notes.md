@@ -113,22 +113,26 @@ Feel free to email me or find me on Skype (username wtaysom) for more hints.
 
 ## Topics
 
-Mouse events, keyboard events, libraries.
-
-!! parameter slider using [Dragdealer JS](http://code.ovidiu.ch/dragdealer/)
+Mouse events, keyboard events, libraries, parameter sliders.
 
 ## Example
 
-* interaction.html.
-* keys.html.
-* [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
-* [Dragdealer JS](http://code.ovidiu.ch/dragdealer/) is an awesome little slider.
+* interaction.html shows mouse and keyboard events.
+* keys.html uses Keymaster to abstract away some keyboard handling.
+* parameters.html adds parameter sliders to the particles example.  Try a sin-factor of 0.775.
 
 ## Tools
 
 * DigitalColor Meter application to get a pixel level inspection of what's going on.
 * [keymaster.js](https://github.com/madrobby/keymaster) for nice keyboard handling.
+* [Dragdealer JS](http://code.ovidiu.ch/dragdealer/) is an awesome little slider.
 
-## Tutorials
+## Reference
 
 * [Canvas Mouse Tutorial](http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) provides one way complete way to find mouse where the mouse is.
+* [Links Style Sheets](http://htmlhelp.com/reference/css/style-html.html).
+
+# Fun For Later
+
+* [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)
+* [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
