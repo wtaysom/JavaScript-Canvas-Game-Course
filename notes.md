@@ -113,9 +113,16 @@ Feel free to email me or find me on Skype (username wtaysom) for more hints.
 
 ## Topics
 
-Mouse events, keyboard events, libraries
+Mouse events, keyboard events, libraries.
 
 !! parameter slider using [Dragdealer JS](http://code.ovidiu.ch/dragdealer/)
+
+## Example
+
+* interaction.html.
+* keys.html.
+* [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
+* [Dragdealer JS](http://code.ovidiu.ch/dragdealer/) is an awesome little slider.
 
 ## Tools
 
@@ -125,7 +132,3 @@ Mouse events, keyboard events, libraries
 ## Tutorials
 
 * [Canvas Mouse Tutorial](http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) provides one way complete way to find mouse where the mouse is.
-
-## Example
-
-[BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
