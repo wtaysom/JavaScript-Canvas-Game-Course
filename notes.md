@@ -132,7 +132,14 @@ Mouse events, keyboard events, libraries, parameter sliders.
 * [Canvas Mouse Tutorial](http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) provides one way complete way to find mouse where the mouse is.
 * [Links Style Sheets](http://htmlhelp.com/reference/css/style-html.html).
 
+# Saturday April 7
+
+## Assignment
+
+Using the concepts we've learned so far.  Think of some good game ideas.
+
 # Fun For Later
 
 * [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)
 * [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
+* [Fool.js](http://fooljs.com/) for April Fools.

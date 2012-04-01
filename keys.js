@@ -7,6 +7,15 @@ var height = 65;
 var x = (canvas.width - width) / 2;
 var y = (canvas.height - height) / 2;
 
+function animate() {
+	if (isHoldingKey('d')) {
+		x += 1;
+	}
+	redraw();
+	setTimeout(animate, 10);
+}
+setTimeout(animate, 10)
+
 key('w', function() {
 	y -= 10;
 	redraw();
@@ -19,11 +28,6 @@ key('a', function() {
 
 key('s', function() {
 	y += 10;
-	redraw();
-});
-
-key('d', function() {
-	x += 10;
 	redraw();
 });
 
