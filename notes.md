@@ -138,6 +138,10 @@ Mouse events, keyboard events, libraries, parameter sliders.
 
 Using the concepts we've learned so far.  Think of some good game ideas.
 
+## Tools
+
+* isHoldingKey.js for telling which keys are held.
+
 # Fun For Later
 
 * [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)

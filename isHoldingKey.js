@@ -36,7 +36,11 @@
 	function handler(event) {
 		var keyName = _MAP[event.keyCode] ||
 			String.fromCharCode(event.keyCode).toLowerCase();
-		heldKeys[keyName] = event.type == 'keydown';
+		if (event.type == 'keydown') {
+			heldKeys[keyName] = true;
+		} else {
+			delete heldKeys[keyName];
+		};
 	};
 	
 	global.addEventListener('keydown', handler, false);
