@@ -138,6 +138,17 @@ Mouse events, keyboard events, libraries, parameter sliders.
 
 Using the concepts we've learned so far.  Think of some good game ideas.
 
+## Game ideas
+
+* Changing the shape of the player to get through a maze.
+* Something with balls merging and splitting.
+* Fighting game where defense actually matters.
+* Some sort of two player guitar hero. 
+* Or a two player Plants verses Zombies.
+* Time travel exploration on a hex grid.
+* Levels/upgrades are good.
+* Mixed strategy required.
+
 ## Tools
 
 * isHoldingKey.js for telling which keys are held.
