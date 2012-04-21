@@ -166,6 +166,9 @@ Gathering resources, shooting bullets, and killing bad guys.
 
 # !! next time
 
+!! make it easier to debug subtle behaviors -- like when the german hits you first, why does he still disappear?
+!! refactor
+
 ## Assignment
 
 * Change intersection to require a real overlap.
