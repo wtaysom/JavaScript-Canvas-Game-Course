@@ -144,5 +144,10 @@ function animate() {
 	}
 }
 
-animate();
-key('space', pause);
+function spacePressed() {
+	pause();
+}
+
+key('space', function() {
+	spacePressed();
+});
