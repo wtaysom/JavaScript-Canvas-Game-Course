@@ -138,7 +138,7 @@ Mouse events, keyboard events, libraries, parameter sliders.
 
 Using the concepts we've learned so far.  Think of some good game ideas.
 
-## Game ideas
+## Game Design
 
 * Changing the shape of the player to get through a maze.
 * Something with balls merging and splitting.
@@ -152,6 +152,17 @@ Using the concepts we've learned so far.  Think of some good game ideas.
 ## Tools
 
 * isHoldingKey.js for telling which keys are held.
+
+# Saturday April 21ish
+
+## Topics
+
+Gathering resources, shooting bullets, and killing bad guys.
+
+## Game Design
+
+* Opponent chooses your wave.  The better you do the more choices he gets to make your next wave harder, but your ship also levels up.
+* During a wave, doing well punishes your opponent.  Conversely taking being harmed or doing poorly gives your opponent bonuses.
 
 # Fun For Later
 
