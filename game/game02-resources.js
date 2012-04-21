@@ -73,7 +73,7 @@ var maxResources = 10;
 var maxResourceCoolDown = 600;
 var resourceCoolDown = maxResourceCoolDown;
 
-function newResource() {
+function addResource() {
 	var size = randomBetween(20, 40);
 	resources.push({
 		x: randomX(),
@@ -84,23 +84,23 @@ function newResource() {
 	});
 }
 
-function maybeSpawnResource() {
+function removeResource(resource) {
+	var i = resources.indexOf(resource);
+	if (i !== -1) {
+		resources.splice(i, 1);
+	}
+}
+
+function maybeAddResource() {
 	if (resources.length >= maxResources) {
 		return;
 	}
 	
 	if (randomBetween(0, resourceCoolDown) < 10) {
 		resourceCoolDown = maxResourceCoolDown;
-		newResource();
+		addResource();
 	} else {
 		--resourceCoolDown;
-	}
-}
-
-function removeResource(resource) {
-	var i = resources.indexOf(resource);
-	if (i !== -1) {
-		resources.splice(i, 1);
 	}
 }
 
@@ -110,9 +110,7 @@ function gatherResource(resource) {
 }
 
 function update() {
-	maybeSpawnResource();
-
-	// Move player.
+	maybeAddResource();
 	move(player);
 
 	for (var i = 0; i < resources.length; ++i) {
@@ -121,8 +119,7 @@ function update() {
 			gatherResource(resource);
 		}
 	}
-
-	// Keep the player on screen.
+	
 	bound(player, boundingBox);
 }
 

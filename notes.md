@@ -171,6 +171,7 @@ Gathering resources, shooting bullets, and killing bad guys.
 
 * Change intersection to require a real overlap.
 * Make diagonal movement speed the same speed as cardinal movement speed.
+* Measure cool downs in milliseconds.
 
 # Fun For Later
 
