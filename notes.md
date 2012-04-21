@@ -164,7 +164,6 @@ Gathering resources, shooting bullets, and killing bad guys.
 * Opponent chooses your wave.  The better you do the more choices he gets to make your next wave harder, but your ship also levels up.
 * During a wave, doing well punishes your opponent.  Conversely taking being harmed or doing poorly gives your opponent bonuses.
 
-
 # !! next time
 
 ## Assignment
@@ -172,6 +171,9 @@ Gathering resources, shooting bullets, and killing bad guys.
 * Change intersection to require a real overlap.
 * Make diagonal movement speed the same speed as cardinal movement speed.
 * Measure cool downs in milliseconds.
+* Have hitting a bad guy lead to death.
+* Have bad guys shoot.
+* Increase difficulty.
 
 # Fun For Later
 
