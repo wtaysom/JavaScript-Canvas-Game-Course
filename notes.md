@@ -153,7 +153,7 @@ Using the concepts we've learned so far.  Think of some good game ideas.
 
 * isHoldingKey.js for telling which keys are held.
 
-# Saturday April 21ish
+# Saturday April 21
 
 ## Topics
 
@@ -164,10 +164,18 @@ Gathering resources, shooting bullets, and killing bad guys.
 * Opponent chooses your wave.  The better you do the more choices he gets to make your next wave harder, but your ship also levels up.
 * During a wave, doing well punishes your opponent.  Conversely taking being harmed or doing poorly gives your opponent bonuses.
 
-# !! next time
+# Saturday April 28
+
+## Topics
+
+Abstraction.  !! Prototypes and junk or what?  Start a bit simplier I think.
 
 !! make it easier to debug subtle behaviors -- like when the german hits you first, why does he still disappear?
 !! refactor
+
+## Tools
+
+* PMCRandom.js.
 
 ## Assignment
 
