@@ -175,7 +175,9 @@ Abstraction.  !! Prototypes and junk or what?  Start a bit simplier I think.
 
 ## Tools
 
-* PMCRandom.js.
+* PMCRandom.js for random numbers.
+* JSON.parse and JSON.stringify for [serialization](http://www.json.org/).
+* [localStorage](http://diveintohtml5.info/storage.html) for saving state in the browser.
 
 ## Assignment
 
