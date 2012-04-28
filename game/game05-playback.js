@@ -82,6 +82,7 @@ journal.reset = function(time) {
 		var entry = this[t];
 		if (entry && entry.state) {
 			state.restore(entry.state);
+			break;
 		}
 	}
 	
@@ -89,8 +90,8 @@ journal.reset = function(time) {
 		var c = controller;
 		controller = {isHoldingKey: heldKeys_isHoldingKey};
 		for (; t < time; ++t) {
-			this.updateHeldKeys(this.time); //!!!
-			console.log(heldKeys.a); //!!!
+			isHoldingKey = controller.isHoldingKey;
+			this.updateHeldKeys(t);
 			update();
 			
 			//? make a checkpoint as needed
@@ -182,6 +183,10 @@ var controller = playController;
 
 var animateTimeout;
 
+function setAnimateTimeout() {
+	animateTimeout = setTimeout(animate, 1000 / fps);
+}
+
 function animate() {
 	isHoldingKey = controller.isHoldingKey;
 	heldKeys = isHoldingKey();
@@ -189,7 +194,7 @@ function animate() {
 		return;
 	}
 	controller.animate();
-	animateTimeout = setTimeout(animate, 1000 / fps);
+	setAnimateTimeout();
 }
 
 playController.animate = function() {
@@ -206,6 +211,16 @@ function pause() {
 	paused = true;
 	infoOriginalHTML = info.innerHTML;
 	info.innerHTML = "paused";
+}
+
+function resume() {
+	if (!paused) {
+		return;
+	}
+	paused = false;
+	info.innerHTML = infoOriginalHTML;
+	setAnimateTimeout();
+	redraw();
 }
 
 /** Playback **/
@@ -268,9 +283,8 @@ playback.restore = function() {
 
 playback.step = function(distance) {
 	var time = this.time === undefined ? journal.time : this.time;
-	var time = Math.min(Math.max(0, time - 1 + distance), journal.time);
+	var time = Math.min(Math.max(0, time + distance), journal.time);
 	this.reset(time);
-	console.log(time); //!!
 	pause();
 	redraw();
 }
@@ -279,7 +293,7 @@ playback.removeStore = function() {
 	localStorage.removeItem('playback');
 }
 
-//!! Add functions for step-by-step playback, rewind and such.
+/** Keys **/
 
 key('p', function() {
 	playback.reset();
