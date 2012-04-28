@@ -34,7 +34,7 @@ state.save = function() {
 	var gathered = {};
 	for (var property in state.properties) {
 		var v = window[property];
-		if (typeof v == 'object' && 'saveState' in v) {
+		if (typeof v === 'object' && 'saveState' in v) {
 			v = v.saveState();
 		}
 		gathered[property] = v;
@@ -46,7 +46,7 @@ state.restore = function(s) {
 	var gathered = JSON.parse(s);
 	for (var property in state.properties) {
 		var v = gathered[property];
-		if (typeof v == 'object' && '__type' in v) {
+		if (typeof v === 'object' && '__type' in v) {
 			v = window[v.__type].restoreFromState(v);
 		}
 		window[property] = v;
@@ -228,13 +228,53 @@ playback.reset = function(time) {
 	resume();
 }
 
+playback.store = function() {
+	localStorage.setItem('playback', JSON.stringify({
+		journal: journal
+	}));
+}
+
+playback.restore = function() {
+	var p = localStorage.getItem('playback');
+	if (!p) {
+		return;
+	}
+	
+	p = JSON.parse(p);
+	
+	// Swap journal.
+	var j = p.journal;
+	for (var key in journal) {
+		var v = journal[key];
+		if (typeof v === 'function') {
+			j[key] = journal[key];
+		}
+	}
+	journal = j;
+	
+	this.reset();
+}
+
+playback.removeStore = function() {
+	localStorage.removeItem('playback');
+}
+
 //!! Add functions for step-by-step playback, rewind and such.
 
 key('p', function() {
 	playback.reset();
 });
 
+key('l', function() {
+	playback.store();
+});
+
+key('k', function() {
+	playback.removeStore();
+});
+
 /** Start **/
 
 state('player bullets bulletCoolDown badGuys random');
 journal.checkpoint();
+playback.restore();
