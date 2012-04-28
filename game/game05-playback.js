@@ -57,7 +57,12 @@ state.restore = function(s) {
 
 var journal = {time: 0};
 
+var heldKeys = {};
 journal.previouslyHeldKeys = {};
+
+function heldKeys_isHoldingKey(key) {
+	return key === undefined ? heldKeys : heldKeys[key];
+}
 
 journal.checkpoint = function() {
 	var entry = this[this.time];
@@ -80,12 +85,33 @@ journal.reset = function(time) {
 		}
 	}
 	
-	for (; t < time; ++t) {
-		update();
-		
-		//? make a checkpoint as needed
-		//? previously held keys can get confused
+	try {
+		var c = controller;
+		controller = {isHoldingKey: heldKeys_isHoldingKey};
+		for (; t < time; ++t) {
+			this.updateHeldKeys(this.time); //!!!
+			console.log(heldKeys.a); //!!!
+			update();
+			
+			//? make a checkpoint as needed
+		}
+	} finally {
+		controller = c;
 	}
+}
+
+journal.updateHeldKeys = function(time) {
+	var entry = this[time];
+	if (!entry) {
+		return;
+	}
+	
+	for (var i in entry.down) {
+		heldKeys[entry.down[i]] = true;
+	}
+	for (var i in entry.up) {
+		delete heldKeys[entry.up[i]];
+	}	
 }
 
 journal.clear = function(time) {
@@ -107,9 +133,7 @@ journal.clear = function(time) {
 journal.record = function() {	
 	++this.time;
 	
-	// Determine heldKeys.
-	
-	var heldKeys = isHoldingKey();
+	// Determine held keys.
 	
 	var down = [];
 	for (var key in heldKeys) {
@@ -160,6 +184,7 @@ var animateTimeout;
 
 function animate() {
 	isHoldingKey = controller.isHoldingKey;
+	heldKeys = isHoldingKey();
 	if (paused) {
 		return;
 	}
@@ -185,11 +210,7 @@ function pause() {
 
 /** Playback **/
 
-var playback = {};
-
-playback.isHoldingKey = function(key) {
-	return key === undefined ? playback.heldKeys : playback.heldKeys[key];
-}
+var playback = {isHoldingKey: heldKeys_isHoldingKey};
 
 playback.animate = function() {
 	++this.time;
@@ -200,16 +221,7 @@ playback.animate = function() {
 		return;
 	}
 	
-	var entry = journal[this.time];
-	if (entry) {
-		for (var i in entry.down) {
-			this.heldKeys[entry.down[i]] = true;
-		}
-		for (var i in entry.up) {
-			delete this.heldKeys[entry.up[i]];
-		}
-	}
-	
+	journal.updateHeldKeys(this.time);
 	update();
 	redraw();
 }
@@ -222,7 +234,6 @@ playback.reset = function(time) {
 	journal.reset(time);
 	
 	this.time = time;
-	this.heldKeys = {}; //? The journal can probably give us a better answer.
 	controller = this;
 	
 	resume();
@@ -255,6 +266,15 @@ playback.restore = function() {
 	this.reset();
 }
 
+playback.step = function(distance) {
+	var time = this.time === undefined ? journal.time : this.time;
+	var time = Math.min(Math.max(0, time - 1 + distance), journal.time);
+	this.reset(time);
+	console.log(time); //!!
+	pause();
+	redraw();
+}
+
 playback.removeStore = function() {
 	localStorage.removeItem('playback');
 }
@@ -265,6 +285,11 @@ key('p', function() {
 	playback.reset();
 });
 
+key('o', function() {
+	playback.reset();
+	pause();
+});
+
 key('l', function() {
 	playback.store();
 });
@@ -273,8 +298,16 @@ key('k', function() {
 	playback.removeStore();
 });
 
+key('left', function() {
+	playback.step(-1);
+});
+
+key('right', function() {
+	playback.step(1);
+});
+
 /** Start **/
 
-state('player bullets bulletCoolDown badGuys random');
+state('heldKeys player bullets bulletCoolDown badGuys marchDirection random');
 journal.checkpoint();
 playback.restore();
