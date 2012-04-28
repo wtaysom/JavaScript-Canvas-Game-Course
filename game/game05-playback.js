@@ -46,14 +46,6 @@ var wasPaused = paused;
 function record() {
 	state.saveInitial();
 	
-	if (!state.initialJSON) {
-		var initialState = {};
-		for (var property in state.properties) {
-			initialState[property] = window[property];
-		}
-		state.initialJSON = JSON.stringify(initialState);
-	}
-	
 	++journal.time;
 	
 	var heldKeys = isHoldingKey();
@@ -104,37 +96,49 @@ function animate() {
 	animateTimeout = setTimeout(animate, 1000 / fps);
 }
 
+function pause() {
+	clearTimeout(animateTimeout);
+	if (paused) {
+		return;
+	}
+	paused = true;
+	infoOriginalHTML = info.innerHTML;
+	info.innerHTML = "paused";
+}
+
 var playbackTime;
 
 function animatePlayback() {
-	if (!paused) {
-		++playbackTime;
-		
-		if (playbackTime >= journal.time) {
-			return;
-		}
-		
-		var entry = journal[playbackTime];
-		if (entry) {		
-			for (var i in entry.down) {
-				playback.heldKeys[entry.down[i]] = true;
-			}
-			for (var i in entry.up) {
-				delete playback.heldKeys[entry.up[i]];
-			}
-		}
-		
-		update();
-		redraw();
-		setTimeout(animate, 1000 / fps);
+	if (paused) {
+		return;
 	}
+	
+	++playbackTime;
+	
+	if (playbackTime >= journal.time) {
+		return;
+	}
+	
+	var entry = journal[playbackTime];
+	if (entry) {		
+		for (var i in entry.down) {
+			playback.heldKeys[entry.down[i]] = true;
+		}
+		for (var i in entry.up) {
+			delete playback.heldKeys[entry.up[i]];
+		}
+	}
+	
+	update();
+	redraw();
+	animateTimeout = setTimeout(animate, 1000 / fps);
 }
 
-//!! Add functions for step-by-step playback, rewind and such.
+//!! Add functions for step-by-step playback, rewind and such.; also add the random seed to the state
+//!! things break if we let playback get to the end -- need a real model of control here
 
 function playback() {
 	pause();
-	clearTimeout(animateTimeout);
 	state.reset();
 	playbackTime = 0;
 	
@@ -150,8 +154,32 @@ function playback() {
 	resume();
 }
 
+function resumeFromPlayback() {
+	if (!playback.originalAnimate) {
+		return;
+	}
+	
+	isHoldingKey = playback.originalIsHoldingKey;
+	delete playback.originalIsHoldingKey;
+	animate = playback.originalAnimate;
+	delete playback.originalAnimate;
+	
+	for (var t in journal) {
+		if (t > journal.time) {
+			delete journal[t];
+		}
+	}
+	
+	pause();
+	resume();
+}
+
 key('p', function() {
 	playback();
+});
+
+key('r', function() {
+	resumeFromPlayback();
 });
 
 /** State **/
