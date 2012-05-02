@@ -322,6 +322,9 @@ key('right', function() {
 
 /** Start **/
 
-state('heldKeys player bullets bulletCoolDown badGuys marchDirection random');
-journal.checkpoint();
-playback.restore();
+state('random heldKeys player bullets bulletCoolDown badGuys marchDirection');
+
+function start() {
+	journal.checkpoint();
+	playback.restore();
+}

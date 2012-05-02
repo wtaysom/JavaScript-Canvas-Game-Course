@@ -164,20 +164,28 @@ Gathering resources, shooting bullets, and killing bad guys.
 * Opponent chooses your wave.  The better you do the more choices he gets to make your next wave harder, but your ship also levels up.
 * During a wave, doing well punishes your opponent.  Conversely taking being harmed or doing poorly gives your opponent bonuses.
 
-# Saturday April 28
+# Wednesday May 2
 
 ## Topics
 
-Abstraction.  !! Prototypes and junk or what?  Start a bit simplier I think.
+Playback.  How to represent state and transformation.  Purity and functionality.
 
-!! make it easier to debug subtle behaviors -- like when the german hits you first, why does he still disappear?
-!! refactor
+Intersection.  It fails because we're checking negative properties instead of positive ones.  Talk about logic and truth tables.  Apply De Morgan's law.
+
+Abstraction.  Refactoring: when it does the right thing but does it in an ugly way, it's good to stop and fix it.  Merge bullet code.
+
+How to refactor:
+
+* Rarify behavior as data (`travel`).
+* Combine special cases together (`bulletIsOutOfBounds`).
+* Use parameters (`resetBullet`).
 
 ## Tools
 
 * PMCRandom.js for random numbers.
 * JSON.parse and JSON.stringify for [serialization](http://www.json.org/).
 * [localStorage](http://diveintohtml5.info/storage.html) for saving state in the browser.
+* game05-playback.js for playing back.
 
 ## Assignment
 
@@ -188,8 +196,13 @@ Abstraction.  !! Prototypes and junk or what?  Start a bit simplier I think.
 * Have bad guys shoot.
 * Increase difficulty.
 
+# Saturday May 5
+
+!! improve replay to reinit state each run, and has some UI
+
 # Fun For Later
 
 * [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)
 * [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
 * [Fool.js](http://fooljs.com/) for April Fools.
+* [Job Prospects](http://techcrunch.com/2012/04/28/they-aint-making-any-more-of-them-the-great-engineering-shortage-of-2012/)
