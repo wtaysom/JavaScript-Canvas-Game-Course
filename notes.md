@@ -196,9 +196,14 @@ How to refactor:
 * Have bad guys shoot.
 * Increase difficulty.
 
-# Saturday May 5
+# Sunday May 6
 
-!! improve replay to reinit state each run, and has some UI
+!! add some UI
+!! multiple baddies, weapons, powerups
+
+## Tools
+
+* Improve replay to reinit state on each run.
 
 # Fun For Later
 
