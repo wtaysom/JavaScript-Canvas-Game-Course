@@ -198,7 +198,10 @@ How to refactor:
 
 # Sunday May 6
 
+!! note what we did do; clean it so we have everything in one place
 !! multiple baddies, weapons, powerups
+!! dude random.between sucks
+!! meet on Wednesday 16, 23
 
 ## Tools
 
