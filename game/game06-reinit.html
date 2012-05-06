@@ -6,8 +6,19 @@
 </head>
 <body onload="start(); animate();">
 	<canvas id="canvas" width="480" height="320" 
-		style="background-color: black;"></canvas>
+		style="background-color: black; float: left; margin-right: 10px;"></canvas>
+	<div id="instructions">
+		WASD &dash; Move Player<br>
+		P &dash; Playback<br>
+		O &dash; Reset<br>
+		L &dash; Save State<br>
+		K &dash; Clear Saved State<br>
+		left arrow &dash; Rewind One Step<br>
+		right arrow &dash; Replay One Step<br>
+	</div>
+	<div style="clear: both;"></div>
 	<div id="info">Reinit</div>
+	<div id="controller"></div>
 	<script src="keymaster.js"></script>
 	<script src="isHoldingKey.js"></script>
 	<script src="game01-player.js"></script>

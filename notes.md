@@ -198,12 +198,11 @@ How to refactor:
 
 # Sunday May 6
 
-!! add some UI
 !! multiple baddies, weapons, powerups
 
 ## Tools
 
-* Improve replay to reinit state on each run.
+* Improve replay to reinit state on each run.  Add a little playback UI.
 
 # Fun For Later
 
