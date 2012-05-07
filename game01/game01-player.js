@@ -8,19 +8,10 @@ var fps = 60;
 var player = {
 	x: canvas.width * 0.6,
 	y: canvas.height * 0.8,
-	width: 65,
-	height: 65,
+	width: 30,
+	height: 40,
 	color: '#C21',
 	speed: 300
-}
-
-var box = {
-	x: canvas.width / 2,
-	y: canvas.height / 2,
-	width: 200,
-	height: 100,
-	hitColor: '#D4D',
-	missColor: '#4D4'
 }
 
 var boundingBox = {
@@ -83,18 +74,6 @@ function move(p) {
 	}
 }
 
-function update() {
-
-	// Move player.
-	move(player);
-
-	// Check for intersection with box.
-	box.color = box[intersects(box, player) ? 'hitColor' : 'missColor'];
-
-	// Keep the player on screen.
-	bound(player, boundingBox);
-}
-
 /** Drawing **/
 
 function fillPiece(p) {
@@ -106,16 +85,6 @@ function fillPiece(p) {
 
 function drawPlayer() {
 	fillPiece(player);
-}
-
-function drawBox() {
-	fillPiece(box);
-}
-
-function redraw() {	
-	c.clearRect(0, 0, canvas.width, canvas.height);
-	drawBox();
-	drawPlayer();
 }
 
 /** Animation **/
@@ -134,14 +103,6 @@ function resume() {
 function log(v) {
 	console.log(v);
 	pause();
-}
-
-function animate() {
-	update();
-	redraw();
-	if (!paused) {
-		setTimeout(animate, 1000 / fps);
-	}
 }
 
 function spacePressed() {

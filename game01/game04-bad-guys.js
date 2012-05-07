@@ -50,6 +50,8 @@ function updateBadGuys() {
 	}
 }
 
+var playerOrigin = {x: player.x, y: player.y};
+
 function maybeRemoveBadGuys() {
 	for (var i = 0; i < bullets.length; ++i) {
 		var bullet = bullets[i];
@@ -60,23 +62,22 @@ function maybeRemoveBadGuys() {
 				--i;
 				removeBadGuy(badGuy);
 				--j;
+				score(100);
+			}
+			removeIfHasRunOffTheBottom(badGuy, removeBadGuy);
+			
+			if (intersects(badGuy, player)) {
+				player.score = 0;
+				badGuys = [];
+				player.x = playerOrigin.x;
+				player.y = playerOrigin.y;
+				
+				if (--player.lives === 0) {
+					gameOver = true;
+				}
 			}
 		}
 	}
-}
-
-function update() {
-	move(player);
-	
-	maybeAddBadGuys();
-	updateBadGuys();
-	maybeRemoveBadGuys();
-	
-	maybeAddBullet();
-	updateBullets();
-	maybeRemoveBullets();
-	
-	bound(player, boundingBox);
 }
 
 /** Drawing **/
@@ -86,11 +87,4 @@ function drawBadGuys() {
 		var badGuy = badGuys[i];
 		fillPiece(badGuy);
 	}
-}
-
-function redraw() {	
-	c.clearRect(0, 0, canvas.width, canvas.height);
-	drawBadGuys();
-	drawBullets();
-	drawPlayer();
 }

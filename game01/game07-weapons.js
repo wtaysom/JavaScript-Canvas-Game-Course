@@ -1,9 +1,10 @@
-/** Game **/
+function removeIfHasRunOffTheBottom(piece, remove) {
+	if (sides(piece).top > canvas.height) {
+		remove(piece);
+	}
+}
 
-player.width = 30;
-player.height = 40;
-
-random.seed = 2074710737;
+/** Powerups **/
 
 var powerups = [];
 var maxPowerups = 3;
@@ -59,12 +60,6 @@ function powerupBullets() {
 	}
 }
 
-function removeIfHasRunOffTheBottom(piece, remove) {
-	if (sides(piece).top > canvas.height) {
-		remove(piece);
-	}
-}
-
 function maybeRemovePowerup() {
 	for (var i = 0; i < powerups.length; ++i) {
 		var powerup = powerups[i];
@@ -72,41 +67,41 @@ function maybeRemovePowerup() {
 	}
 }
 
+/** Score **/
+
 player.score = 0;
 
 function score(points) {
 	player.score += points;
 }
 
-var original = {x: player.x, y: player.y};
+function drawScore() {
+	var div = document.getElementById('score');
+	div.innerHTML = player.score;
+}
 
-function maybeRemoveBadGuys() {
-	for (var i = 0; i < bullets.length; ++i) {
-		var bullet = bullets[i];
-		for (var j = 0; j < badGuys.length; ++j) {
-			var badGuy = badGuys[j];
-			if (intersects(badGuy, bullet)) {
-				removeBullet(bullet);
-				--i;
-				removeBadGuy(badGuy);
-				--j;
-				score(100);
-			}
-			removeIfHasRunOffTheBottom(badGuy, removeBadGuy);
-			
-			if (intersects(badGuy, player)) {
-				player.score = 0;
-				badGuys = [];
-				player.x = original.x;
-				player.y = original.y;
-				
-				if (--player.lives === 0) {
-					gameOver = true;
-				}
-			}
-		}
+/** Game Over **/
+
+player.lives = 3;
+var gameOver = false;
+
+function drawGameOver() {
+	c.fillStyle = 'red';
+	c.font = "bold 60pt Arial";
+	var baseX = 120;
+	var baseY = 140;
+	c.fillText("GAME", baseX, baseY);
+	c.fillText("OVER", baseX, baseY + 100);
+}
+
+function restart() {
+	if (gameOver) {
+		player.lives = 3;
+		gameOver = false;
 	}
 }
+
+key('w,a,s,d', restart);
 
 /** Update **/
 
@@ -135,38 +130,23 @@ function drawPowerups() {
 	}
 }
 
-player.lives = 3;
-var gameOver = false;
+/** Redraw **/
 
 function redraw() {
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	if (gameOver) {
-		c.fillStyle = 'red';
-		c.font = "bold 60pt Arial";
-		var baseX = 120;
-		var baseY = 140;
-		c.fillText("GAME", baseX, baseY);
-		c.fillText("OVER", baseX, baseY + 100);
+		drawGameOver();
 	} else {
 		drawPowerups();
 		drawBadGuys();
 		drawBullets();
 		drawPlayer();
-		
-		var div = document.getElementById('score');
-		div.innerHTML = player.score;
+		drawScore();
 	}
 }
-
-function restart() {
-	if (gameOver) {
-		player.lives = 3;
-		gameOver = false;
-	}
-}
-
-key('w,a,s,d', restart);
 
 /** State **/
+
+random.seed = 2074710737;
 
 state('random heldKeys player bullets bulletCoolDown maxBulletCoolDown badGuys marchDirection powerups maxPowerupCoolDown powerupCoolDown gameOver');

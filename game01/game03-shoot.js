@@ -1,5 +1,3 @@
-/** Bullets **/
-
 var bullets = [];
 var maxBullets = 30;
 var maxBulletCoolDown = 20;
@@ -54,27 +52,9 @@ function maybeRemoveBullets() {
 	}
 }
 
-function update() {
-	move(player);
-	
-	maybeAddBullet();
-	updateBullets();
-	maybeRemoveBullets();
-	
-	bound(player, boundingBox);
-}
-
-/** Drawing **/
-
 function drawBullets() {
 	for (var i = 0; i < bullets.length; ++i) {
 		var bullet = bullets[i];
 		fillPiece(bullet);
 	}
-}
-
-function redraw() {	
-	c.clearRect(0, 0, canvas.width, canvas.height);
-	drawBullets();
-	drawPlayer();
 }
