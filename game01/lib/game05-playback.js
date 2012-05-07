@@ -1,11 +1,5 @@
 /** Random Numbers **/
 
-var random = new PMCRandom();
-
-function randomBetween(min, max) {
-	return random.between(min, max);
-}
-
 PMCRandom.prototype.saveState = function() {
 	return {
 		__type: 'PMCRandom',
@@ -15,6 +9,20 @@ PMCRandom.prototype.saveState = function() {
 
 PMCRandom.restoreFromState = function(state) {
 	return new PMCRandom(state.seed);
+}
+
+var random = new PMCRandom();
+
+function randomBetween(min, max) {
+	return random.between(min, max);
+}
+
+function randomX() {
+	return randomBetween(0, canvas.width);
+}
+
+function randomY() {
+	return randomBetween(0, canvas.height);
 }
 
 /** State **/
@@ -127,8 +135,6 @@ journal.clear = function(time) {
 			delete journal[t];
 		}
 	}
-	
-	//? need to handle down and up keys else I think we get into trouble
 }
 
 journal.record = function() {	

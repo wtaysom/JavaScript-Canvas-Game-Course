@@ -1,13 +1,3 @@
-/** Random Numbers **/
-
-function randomX() {
-	return randomBetween(0, canvas.width);
-}
-
-function randomY() {
-	return randomBetween(0, canvas.height);
-}
-
 /** Game **/
 
 player.width = 30;
@@ -175,10 +165,7 @@ function restart() {
 	}
 }
 
-key('w', restart);
-key('a', restart);
-key('s', restart);
-key('d', restart);
+key('w,a,s,d', restart);
 
 /** State **/
 
