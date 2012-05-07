@@ -206,7 +206,7 @@ How to refactor:
 
 # Wednesday May 16
 
-* Consolidate project files.
+* Consolidate project files.  Reorganize project files.
 
 # Fun For Later
 
