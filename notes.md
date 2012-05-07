@@ -198,12 +198,15 @@ How to refactor:
 
 # Sunday May 6
 
-!! note what we did do; clean it so we have everything in one place
-!! multiple baddies, weapons, powerups
+* Add powerups, score, and Game Over screen.
 
 ## Tools
 
 * Improve replay to reinit state on each run.  Add a little playback UI.
+
+# Wednesday May 16
+
+* Consolidate project files.
 
 # Fun For Later
 
