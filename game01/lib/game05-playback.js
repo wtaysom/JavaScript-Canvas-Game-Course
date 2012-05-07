@@ -227,18 +227,24 @@ function resume() {
 
 var playback = {isHoldingKey: heldKeys_isHoldingKey};
 
+playback.updateControllerHTML = function() {
+	var c = document.getElementById('controller');
+	c.innerHTML = controller === this ? this.time+"/"+journal.time : "";
+}
+
 playback.animate = function() {
 	++this.time;
 	
 	if (this.time >= journal.time) {
 		controller = playController;
 		pause();
-		return;
+	} else {
+		journal.updateHeldKeys(this.time);
+		update();
+		redraw();
 	}
 	
-	journal.updateHeldKeys(this.time);
-	update();
-	redraw();
+	this.updateControllerHTML();
 }
 
 playback.reset = function(time) {
@@ -250,6 +256,7 @@ playback.reset = function(time) {
 	
 	this.time = time;
 	controller = this;
+	this.updateControllerHTML();
 	
 	resume();
 }
@@ -267,17 +274,15 @@ playback.restore = function() {
 	}
 	
 	p = JSON.parse(p);
+	var initialState = journal[0].state;
 	
-	// Swap journal.
+	// Only copy down and up properties.
 	var j = p.journal;
-	for (var key in journal) {
-		var v = journal[key];
-		if (typeof v === 'function') {
-			j[key] = journal[key];
-		}
+	for (var key in j) {
+		journal[key] = j[key];
 	}
-	journal = j;
 	
+	journal[0].state = initialState;
 	this.reset();
 }
 
@@ -322,9 +327,8 @@ key('right', function() {
 
 /** Start **/
 
-state('random heldKeys player bullets bulletCoolDown badGuys marchDirection');
-
 function start() {
 	journal.checkpoint();
 	playback.restore();
+	animate();
 }
