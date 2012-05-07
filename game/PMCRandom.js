@@ -40,7 +40,7 @@ PMCRandom.prototype.random = function() {
 }
 
 PMCRandom.prototype.between = function(lowerLimit, upperLimit) {
-	return this.rand(upperLimit) + lowerLimit;
+	return this.rand(upperLimit - lowerLimit) + lowerLimit;
 }
 
 global.PMCRandom = PMCRandom;
