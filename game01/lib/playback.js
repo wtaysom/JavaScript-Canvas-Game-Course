@@ -209,6 +209,10 @@ playController.animate = function() {
 	redraw();
 }
 
+/** Pause **/
+
+var paused = false;
+
 function pause() {
 	clearTimeout(animateTimeout);
 	if (paused) {
@@ -227,6 +231,11 @@ function resume() {
 	info.innerHTML = infoOriginalHTML;
 	setAnimateTimeout();
 	redraw();
+}
+
+function log(v) {
+	console.log(v);
+	pause();
 }
 
 /** Playback **/
@@ -329,6 +338,14 @@ key('left', function() {
 
 key('right', function() {
 	playback.step(1);
+});
+
+key('space', function() {
+	if (paused) {
+		resume();
+	} else {
+		pause();
+	}
 });
 
 /** Start **/
