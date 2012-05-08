@@ -70,17 +70,8 @@ function fillPiece(p) {
 	c.fillRect(x, y, p.width, p.height);
 }
 
-/** Game **/
-
-var player = {
-	x: canvas.width * 0.6,
-	y: canvas.height * 0.8,
-	width: 30,
-	height: 40,
-	color: '#C21',
-	speed: 300
-}
-
-function drawPlayer() {
-	fillPiece(player);
+function removeIfHasRunOffTheBottom(piece, remove) {
+	if (sides(piece).top > canvas.height) {
+		remove(piece);
+	}
 }
