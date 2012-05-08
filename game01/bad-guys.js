@@ -1,5 +1,3 @@
-/** Bad Guys **/
-
 var badGuys = [];
 var maxBadGuys = 10;
 var marchDirection = 1;
@@ -79,8 +77,6 @@ function maybeRemoveBadGuys() {
 		}
 	}
 }
-
-/** Drawing **/
 
 function drawBadGuys() {
 	for (var i = 0; i < badGuys.length; ++i) {
