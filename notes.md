@@ -207,6 +207,18 @@ How to refactor:
 # Wednesday May 16
 
 * Consolidate project files.  Reorganize project files.
+* Add a boss who shoots missles (game02).
+
+## Resources
+
+* [Stack Overflow](http://stackoverflow.com/) for asking questions.
+* [GitHub](https://github.com/) for sharing projects.  Use the [GitHub for Mac](http://mac.github.com/) app.
+* [Codeaholics](http://codeaholics.hk/) to meet some people in the programming community in Hong Kong.
+
+# Wednesday May 23
+
+* !! factor out missles and bullets and powerups -- lists of things
+* !! factor out a function that handles removing items from a list without sucking
 
 # Fun For Later
 
