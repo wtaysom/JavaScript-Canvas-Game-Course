@@ -207,7 +207,7 @@ How to refactor:
 # Wednesday May 16
 
 * Consolidate project files.  Reorganize project files.
-* Add a boss who shoots missles (game02).
+* Add a boss who shoots missiles (game02).
 
 ## Resources
 
@@ -217,12 +217,15 @@ How to refactor:
 
 # Wednesday May 23
 
-* !! factor out missles and bullets and powerups -- lists of things
-* !! factor out a function that handles removing items from a list without sucking
+* !! factor out a function that handles removing items from a list without sucking -- write some unit tests
+* !! factor out missiles and bullets and powerups -- lists of things
 
 # Fun For Later
 
-* [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)
+* [How to be a programmer](http://samizdat.mines.edu/howto/HowToBeAProgrammer.html) is a long essay with sound advice regarding all aspects of software development and many aspects of just working in a team.
+* [Job Prospects](http://techcrunch.com/2012/04/28/they-aint-making-any-more-of-them-the-great-engineering-shortage-of-2012/)
+* [Guide to iIplementing 2d Platformers](http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/)
+* Robert Sedgewick's [into to CS](introcs.cs.princeton.edu) and [algorithms](algs4.cs.princeton.edu) classes.
 * [BrowserQuest](https://hacks.mozilla.org/2012/03/browserquest/) is a demo massively multiplayer game.
 * [Fool.js](http://fooljs.com/) for April Fools.
-* [Job Prospects](http://techcrunch.com/2012/04/28/they-aint-making-any-more-of-them-the-great-engineering-shortage-of-2012/)
+* [Hang Man Strategy](http://www.datagenetics.com/blog/april12012/index.html)

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Game - Project</title>
+</head>
+<body onload="start()">
+	<div id="score">0</div>
+	<canvas id="canvas" width="480" height="320" 
+		style="background-color: black; float: left; margin-right: 10px;"></canvas>
+	<div id="instructions">
+		WASD &dash; Move Player<br>
+		P &dash; Playback<br>
+		O &dash; Reset<br>
+		L &dash; Save State<br>
+		K &dash; Clear Saved State<br>
+		left arrow &dash; Rewind One Step<br>
+		right arrow &dash; Replay One Step<br>
+	</div>
+	<div style="clear: both;"></div>
+	<div id="info">Project</div>
+	<div id="controller"></div>
+	<script src="lib/keymaster.js"></script>
+	<script src="lib/isHoldingKey.js"></script>
+	<script src="lib/PMCRandom.js"></script>
+	<script src="lib/playback.js"></script>
+	<script src="util.js"></script>
+	<script src="player.js"></script>
+	<script src="bullets.js"></script>
+	<script src="bad-guys.js"></script>
+	<script src="powerups.js"></script>
+	<script src="game-over.js"></script>
+	<script src="score.js"></script>
+	<script src="boss.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
