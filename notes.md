@@ -219,8 +219,11 @@ How to refactor:
 
 * Separate concerns by factoring out a `reject` function that handles removing items from a list.
 * Factor out Bullets class and Projectiles superclass.
-* !! Factor out Missiles class using Projectiles superclass.
-* !! Factor out Aggregate superclass.
+* Factor out Missiles class using Projectiles superclass.
+
+## Assignment
+
+* Factor out Aggregate superclass of Projectiles, badGuys, and powerups.
 
 # Fun For Later
 

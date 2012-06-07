@@ -39,9 +39,10 @@ projectiles = {
 		this.add();
 	},
 	update: function() {
-		forEach(this.members, function(member) {
-			member.y += member.speed / fps;
-		});
+		forEach(this.members, this.updateMember);
+	},
+	updateMember: function(member) {
+		member.y += member.speed / fps;
 	},
 	maybeRemove: function() {
 		reject(this.members, this.shouldBeRemoved);

@@ -9,9 +9,9 @@ function update() {
 	bullets.update();
 	bullets.maybeRemove();
 	
-	maybeAddMissile();
-	updateMissiles();
-	maybeRemoveMissiles();
+	missiles.maybeAdd();
+	missiles.update();
+	missiles.maybeRemove();
 	
 	// maybeAddPowerup();
 	// updatePowerups();
@@ -30,7 +30,7 @@ function redraw() {
 		drawPowerups();
 		drawBadGuys();
 		bullets.draw();
-		drawMissiles();
+		missiles.draw();
 		drawBoss();
 		drawPlayer();
 		drawScore();

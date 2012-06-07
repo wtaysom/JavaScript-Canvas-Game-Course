@@ -18,13 +18,13 @@ function drawBoss() {
 
 /** Missiles **/
 
-var missiles = [];
-var maxMissiles = 30;
-var maxMissileCoolDown = 20;
-var missileCoolDown = maxMissileCoolDown;
+function Missiles() {
+	Projectiles.call(this);
+}
+Missiles.prototype = new Projectiles();
 
-function addMissile() {
-	missiles.push({
+Missiles.prototype.newMember = function() {
+	return {
 		x: boss.x,
 		y: sides(boss).bottom,
 		dx: randomBetween(-1, 2),
@@ -33,56 +33,42 @@ function addMissile() {
 		height: 16,
 		speed: 400,
 		color: '#8C4'
-	});
-}
-
-function removeMissile(missile) {
-	var i = missiles.indexOf(missile);
-	if (i !== -1) {
-		missiles.splice(i, 1);
 	}
 }
 
-function maybeAddMissile() {
-	if (missiles.length >= maxMissiles) {
-		return;
-	}
+Missiles.prototype.updateMember = function(missile) {
+	missile.y += missile.speed / 4 / fps;
 	
-	if (missileCoolDown > 0) {
-		--missileCoolDown;
-		return;
-	}
+	missile.x += missile.dx;
+	missile.y += missile.dy;
 	
-	missileCoolDown = maxMissileCoolDown;
-	addMissile();
+	// Wobbles.
+	missile.x += missile.speed / 3 / fps * randomBetween(-1, 2);
+	
+	//missile.x += missile.x == player.x ? 0 : missile.x < player.x ? 1 : -1;
+	//missile.y += missile.y == player.y ? 0 : missile.y < player.y ? 1 : -1;
+	
+	missile.dx += 0.2 * (missile.x == player.x ? 0 : missile.x < player.x ? 1 : -1);
+	missile.dy += 0.2 * (missile.y == player.y ? 0 : missile.y < player.y ? 1 : -1);
 }
 
-function updateMissiles() {
-	for (var i = 0; i < missiles.length; ++i) {
-		var missile = missiles[i];
-		missile.y += missile.speed / 4 / fps;
-		
-		missile.x += missile.dx;
-		missile.y += missile.dy;
-		
-		// Wobbles.
-		missile.x += missile.speed / 3 / fps * randomBetween(-1, 2);
-		
-		//missile.x += missile.x == player.x ? 0 : missile.x < player.x ? 1 : -1;
-		//missile.y += missile.y == player.y ? 0 : missile.y < player.y ? 1 : -1;
-		
-		missile.dx += 0.2 * (missile.x == player.x ? 0 : missile.x < player.x ? 1 : -1);
-		missile.dy += 0.2 * (missile.y == player.y ? 0 : missile.y < player.y ? 1 : -1);
+Missiles.prototype.saveState = function() {
+	return {
+		__type: 'Missiles',
+		members: this.members,
+		max: this.max,
+		maxCoolDown: this.maxCoolDown,
+		coolDown: this.coolDown
 	}
 }
 
-function maybeRemoveMissiles() {
-	reject(missiles, ifHasRunOffTheBottom);
+Missiles.restoreFromState = function(state) {
+	var p = new Missiles();
+	p.members = state.members;
+	p.max = state.max;
+	p.maxCoolDown = state.maxCoolDown;
+	p.coolDown = state.coolDown
+	return p;
 }
 
-function drawMissiles() {
-	for (var i = 0; i < missiles.length; ++i) {
-		var missile = missiles[i];
-		fillPiece(missile);
-	}
-}
+var missiles = new Missiles();
