@@ -1,3 +1,17 @@
+/** Array Util **/
+
+function reject(array, condition) {
+	for (var i = 0; i < array.length; ++i) {
+		var item = array[i];
+		if (condition(item)) {
+			array.splice(i, 1);
+			--i; // so that we don't skip any.
+		}
+	}
+}
+
+/** Game Util **/
+
 var canvas = document.getElementById('canvas');
 var c = canvas.getContext('2d');
 
@@ -70,8 +84,10 @@ function fillPiece(p) {
 	c.fillRect(x, y, p.width, p.height);
 }
 
-function removeIfHasRunOffTheBottom(piece, remove) {
-	if (sides(piece).top > canvas.height) {
-		remove(piece);
-	}
+function ifHasRunOffTheTop(piece) {
+	return sides(piece).bottom < 0;
+}
+
+function ifHasRunOffTheBottom(piece) {
+	return sides(piece).top > canvas.height;
 }

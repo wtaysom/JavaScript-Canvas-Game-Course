@@ -9,7 +9,7 @@ var boss = {
 };
 
 function updateBoss() {
-	//!! change in some way
+	//?? change in some way
 }
 
 function drawBoss() {
@@ -77,10 +77,7 @@ function updateMissiles() {
 }
 
 function maybeRemoveMissiles() {
-	for (var i = 0; i < missiles.length; ++i) {
-		var missile = missiles[i];
-		removeIfHasRunOffTheBottom(missile, removeMissile);
-	}
+	reject(missiles, ifHasRunOffTheBottom);
 }
 
 function drawMissiles() {

@@ -55,6 +55,8 @@ function maybeRemoveBadGuys() {
 		var bullet = bullets[i];
 		for (var j = 0; j < badGuys.length; ++j) {
 			var badGuy = badGuys[j];
+			
+			// reject is hard to use here since we are iterating across two // arrays at once.
 			if (intersects(badGuy, bullet)) {
 				removeBullet(bullet);
 				--i;
@@ -62,7 +64,6 @@ function maybeRemoveBadGuys() {
 				--j;
 				score(100);
 			}
-			removeIfHasRunOffTheBottom(badGuy, removeBadGuy);
 			
 			if (intersects(badGuy, player)) {
 				player.score = 0;
@@ -76,6 +77,8 @@ function maybeRemoveBadGuys() {
 			}
 		}
 	}
+	
+	reject(badGuys, ifHasRunOffTheBottom);
 }
 
 function drawBadGuys() {

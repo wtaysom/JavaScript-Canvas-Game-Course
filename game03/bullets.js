@@ -43,13 +43,7 @@ function updateBullets() {
 }
 
 function maybeRemoveBullets() {
-	for (var i = 0; i < bullets.length; ++i) {
-		var bullet = bullets[i];
-		if (bullet.y < -bullet.height * 2) {
-			removeBullet(bullet);
-			--i; // so that we don't skip any.
-		}
-	}
+	reject(bullets, ifHasRunOffTheTop);
 }
 
 function drawBullets() {

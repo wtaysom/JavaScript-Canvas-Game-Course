@@ -53,10 +53,7 @@ function powerupBullets() {
 }
 
 function maybeRemovePowerup() {
-	for (var i = 0; i < powerups.length; ++i) {
-		var powerup = powerups[i];
-		removeIfHasRunOffTheBottom(powerup, removePowerup);
-	}
+	reject(powerups, ifHasRunOffTheBottom);
 }
 
 function drawPowerups() {
