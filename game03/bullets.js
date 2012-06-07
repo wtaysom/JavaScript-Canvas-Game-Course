@@ -1,54 +1,36 @@
-var bullets = [];
-var maxBullets = 30;
-var maxBulletCoolDown = 20;
-var bulletCoolDown = maxBulletCoolDown;
+function Bullets() {
+	Projectiles.call(this);
+}
+Bullets.prototype = new Projectiles();
 
-function addBullet() {
-	bullets.push({
+Bullets.prototype.newMember = function() {
+	return {
 		x: player.x,
 		y: sides(player).top,
 		width: 4,
 		height: 16,
-		speed: 400,
+		speed: -400,
 		color: '#C84'
-	});
-}
-
-function removeBullet(bullet) {
-	var i = bullets.indexOf(bullet);
-	if (i !== -1) {
-		bullets.splice(i, 1);
 	}
 }
 
-function maybeAddBullet() {
-	if (bullets.length >= maxBullets) {
-		return;
-	}
-	
-	if (bulletCoolDown > 0) {
-		--bulletCoolDown;
-		return;
-	}
-	
-	bulletCoolDown = maxBulletCoolDown;
-	addBullet();
-}
-
-function updateBullets() {
-	for (var i = 0; i < bullets.length; ++i) {
-		var bullet = bullets[i];
-		bullet.y -= bullet.speed / fps;
+Bullets.prototype.saveState = function() {
+	return {
+		__type: 'Bullets',
+		members: this.members,
+		max: this.max,
+		maxCoolDown: this.maxCoolDown,
+		coolDown: this.coolDown
 	}
 }
 
-function maybeRemoveBullets() {
-	reject(bullets, ifHasRunOffTheTop);
+Bullets.restoreFromState = function(state) {
+	var p = new Bullets();
+	p.members = state.members;
+	p.max = state.max;
+	p.maxCoolDown = state.maxCoolDown;
+	p.coolDown = state.coolDown
+	return p;
 }
 
-function drawBullets() {
-	for (var i = 0; i < bullets.length; ++i) {
-		var bullet = bullets[i];
-		fillPiece(bullet);
-	}
-}
+var bullets = new Bullets();

@@ -1,5 +1,12 @@
 /** Array Util **/
 
+function forEach(array, action) {
+	for (var i = 0; i < array.length; ++i) {
+		var item = array[i];
+		action(item);
+	}
+}
+
 function reject(array, condition) {
 	for (var i = 0; i < array.length; ++i) {
 		var item = array[i];
